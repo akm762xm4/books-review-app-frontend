@@ -17,7 +17,7 @@ const initialFormData: BookFormData = {
 };
 
 const BookManagement = () => {
-  const { data: books, isLoading } = useGetBooksQuery({});
+  const { data: books, isLoading } = useGetBooksQuery();
   const [createBook] = useCreateBookMutation();
   const [updateBook] = useUpdateBookMutation();
   const [deleteBook] = useDeleteBookMutation();
