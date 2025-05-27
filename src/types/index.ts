@@ -74,8 +74,8 @@ export interface User {
 export interface AuthCredentials {
   email: string;
   password?: string;
-  _id: string | undefined;
+  _id?: string | undefined;
   name?: string;
   isAdmin?: boolean;
-  token: string;
+  token?: string;
 }
