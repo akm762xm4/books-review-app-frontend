@@ -32,7 +32,7 @@ export const api = createApi({
     }),
     getBook: builder.query<Book, string>({
       query: (id) => `books/${id}`,
-      providesTags: (result, error, id) => [{ type: "Book", id }],
+      providesTags: ["Book"],
     }),
     createBook: builder.mutation<Book, BookFormData>({
       query: (book) => ({
@@ -54,7 +54,7 @@ export const api = createApi({
           Authorization: `Bearer ${token}`,
         },
       }),
-      invalidatesTags: (result, error, { id }) => [{ type: "Book", id }],
+      invalidatesTags: ["Book"],
     }),
     deleteBook: builder.mutation<void, string>({
       query: (id) => ({
@@ -70,7 +70,7 @@ export const api = createApi({
     // Reviews endpoints
     getBookReviews: builder.query<Review[], string>({
       query: (bookId) => `${bookId}/reviews`,
-      providesTags: (result, error, bookId) => [{ type: "Review", id: bookId }],
+      providesTags: ["Review"],
     }),
     submitReview: builder.mutation<
       Review,
@@ -87,15 +87,12 @@ export const api = createApi({
           Authorization: `Bearer ${token}`,
         },
       }),
-      invalidatesTags: (result, error, { bookId }) => [
-        { type: "Review", id: bookId },
-        { type: "Book", id: bookId },
-      ],
+      invalidatesTags: ["Review", "Book"],
     }),
 
     getUserReviews: builder.query<UserReview[], string>({
       query: (userId) => `user/${userId}/reviews`,
-      providesTags: (result, error, userId) => [{ type: "Review", id: userId }],
+      providesTags: ["Review"],
     }),
 
     // Auth endpoints
