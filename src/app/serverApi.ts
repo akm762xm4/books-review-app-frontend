@@ -11,9 +11,12 @@ import { getAuthUser } from "./useAuthState";
 
 const token = getAuthUser()?.token;
 
+// const baseUrl = "http://localhost:5000/api"
+const baseUrl = "https://book-review-app-backend.vercel.app/api";
+
 export const api = createApi({
   reducerPath: "api",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000/api" }),
+  baseQuery: fetchBaseQuery({ baseUrl: baseUrl }),
   tagTypes: ["Book", "Review", "User"],
   endpoints: (builder) => ({
     // Books endpoints
